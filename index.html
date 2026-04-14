@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Learning Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --surface: #FFFFFF;
+      --ink: #1A1814;
+      --ink-2: #6B6760;
+      --ink-3: #B0ADA8;
+      --accent: #2D5BE3;
+      --accent-light: #EBF0FD;
+      --tag-concept: #F0EBF8;
+      --tag-concept-ink: #5B3A9E;
+      --tag-tool: #E5F5EE;
+      --tag-tool-ink: #1A6B40;
+      --tag-tutorial: #FDF3E3;
+      --tag-tutorial-ink: #8A5A00;
+      --border: #E8E5DF;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-2);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2.5rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--ink-2);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+    }
+    .stat-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px;
+      color: var(--ink);
+      display: block;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* MAIN LAYOUT */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1rem 2rem 4rem;
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 3rem 0 1.25rem;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .section-count {
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
+    /* CONCEPT CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      border-color: #D0CCC5;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+    .tag-concept { background: var(--tag-concept); color: var(--tag-concept-ink); }
+    .tag-tool    { background: var(--tag-tool);    color: var(--tag-tool-ink); }
+    .tag-tutorial{ background: var(--tag-tutorial); color: var(--tag-tutorial-ink); }
+    .card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+    .card p {
+      font-size: 13px;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+    .card-date {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+
+    /* FEATURED CARD */
+    .card-featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    .card-featured:hover { border-color: #333; }
+    .card-featured .tag-concept {
+      background: rgba(255,255,255,0.12);
+      color: #C8BAFF;
+    }
+    .card-featured h3 { color: #fff; font-size: 18px; }
+    .card-featured p { color: rgba(255,255,255,0.65); }
+    .card-featured .card-date { color: rgba(255,255,255,0.35); }
+    .card-featured-right {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .card-featured-right p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* TOOLS LIST */
+    .tools-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .tool-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.12s;
+    }
+    .tool-row:hover { background: #FAFAF8; }
+    .tool-row-left { display: flex; align-items: center; gap: 12px; }
+    .tool-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .tool-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+    .tool-desc { font-size: 12px; color: var(--ink-2); margin-top: 1px; }
+    .tool-badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--tag-tool);
+      color: var(--tag-tool-ink);
+      font-weight: 500;
+    }
+    .tool-badge.neutral {
+      background: var(--bg);
+      color: var(--ink-3);
+    }
+
+    /* DIVIDER */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    /* RESPONSIVE */
+    @media (max-width: 560px) {
+      nav { padding: 1rem; }
+      .hero, main { padding-left: 1rem; padding-right: 1rem; }
+      .card-featured { grid-template-columns: 1fr; }
+      .card-featured-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 1rem; }
+      .hero-stats { gap: 1.25rem; }
+    }
+
+    /* FADE IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeIn 0.5s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: none; }
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.05s; }
+    .fade-in:nth-child(2) { animation-delay: 0.10s; }
+    .fade-in:nth-child(3) { animation-delay: 0.15s; }
+    .fade-in:nth-child(4) { animation-delay: 0.20s; }
+    .fade-in:nth-child(5) { animation-delay: 0.25s; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="#">AI Journal ✦</a>
+    <div class="nav-links">
+      <a href="#concepts">Concepts</a>
+      <a href="#tools">Tools</a>
+      <a href="https://github.com/yourusername" target="_blank">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Actively learning</div>
+    <h1>My notes on <em>AI engineering</em> and the tools shaping it</h1>
+    <p class="hero-desc">
+      A living journal of what I'm exploring — from foundational concepts like MCP and context engineering to hands-on experiments with AI tools.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">6</span>
+        <span class="stat-label">Concepts</span>
+      </div>
+      <div>
+        <span class="stat-num">8</span>
+        <span class="stat-label">Tools tried</span>
+      </div>
+      <div>
+        <span class="stat-num">2025</span>
+        <span class="stat-label">Started</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="concepts">
+      <div class="section-header">
+        <h2 class="section-title">Concepts & Notes</h2>
+        <span class="section-count">6 entries</span>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- FEATURED CARD -->
+        <div class="card card-featured fade-in">
+          <div>
+            <span class="tag tag-concept">Concept</span>
+            <h3>Model Context Protocol (MCP)</h3>
+            <p>How AI models connect to external tools, APIs, and data sources — and why it changes what agents can do.</p>
+            <p class="card-date">April 2026</p>
+          </div>
+          <div class="card-featured-right">
+            <p>MCP is an open standard that lets AI models like Claude talk to external services — databases, APIs, file systems — through a common interface. Think of it as a USB-C port for AI: any model, any tool, one protocol.</p>
+          </div>
+        </div>
+
+        <a href="#" class="card fade-in">
+          <span class="tag tag-concept">Concept</span>
+          <h3>Context engineering</h3>
+          <p>Designing what goes into the context window to get better, more reliable model responses.</p>
+          <p class="card-date">March 2026</p>
+        </a>
+
+        <a href="#" class="card fade-in">
+          <span class="tag tag-concept">Concept</span>
+          <h3>Prompt engineering basics</h3>
+          <p>System prompts, few-shot examples, chain-of-thought — the foundations of getting models to do what you want.</p>
+          <p class="card-date">February 2026</p>
+        </a>
+
+        <a href="#" class="card fade-in">
+          <span class="tag tag-tutorial">Tutorial</span>
+          <h3>Building my first AI agent</h3>
+          <p>Step-by-step: connecting Claude to a live data source using the Anthropic API.</p>
+          <p class="card-date">March 2026</p>
+        </a>
+
+        <a href="#" class="card fade-in">
+          <span class="tag tag-concept">Concept</span>
+          <h3>RAG — Retrieval Augmented Generation</h3>
+          <p>How to give a model access to your own documents and data at inference time.</p>
+          <p class="card-date">January 2026</p>
+        </a>
+
+        <a href="#" class="card fade-in">
+          <span class="tag tag-tutorial">Tutorial</span>
+          <h3>Automating tasks with n8n + AI</h3>
+          <p>A walkthrough of building a no-code AI workflow that summarises emails automatically.</p>
+          <p class="card-date">April 2026</p>
+        </a>
+
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="tools">
+      <div class="section-header">
+        <h2 class="section-title">Tools I've tried</h2>
+        <span class="section-count">8 tools</span>
+      </div>
+
+      <div class="tools-list">
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">✦</div>
+            <div>
+              <div class="tool-name">Claude (Anthropic)</div>
+              <div class="tool-desc">Daily driver for coding, writing, and exploration</div>
+            </div>
+          </div>
+          <span class="tool-badge">Daily use</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">⌘</div>
+            <div>
+              <div class="tool-name">Cursor</div>
+              <div class="tool-desc">AI-first code editor built on VS Code</div>
+            </div>
+          </div>
+          <span class="tool-badge">Daily use</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">⚡</div>
+            <div>
+              <div class="tool-name">n8n</div>
+              <div class="tool-desc">No-code automation with AI integrations</div>
+            </div>
+          </div>
+          <span class="tool-badge">Experimenting</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">🦙</div>
+            <div>
+              <div class="tool-name">Ollama</div>
+              <div class="tool-desc">Run open-source models locally on your machine</div>
+            </div>
+          </div>
+          <span class="tool-badge">Experimenting</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">🔗</div>
+            <div>
+              <div class="tool-name">LangChain</div>
+              <div class="tool-desc">Framework for building LLM-powered applications</div>
+            </div>
+          </div>
+          <span class="tool-badge neutral">Tried</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">🔍</div>
+            <div>
+              <div class="tool-name">Perplexity</div>
+              <div class="tool-desc">AI-powered search with cited sources</div>
+            </div>
+          </div>
+          <span class="tool-badge neutral">Tried</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">🤗</div>
+            <div>
+              <div class="tool-name">Hugging Face</div>
+              <div class="tool-desc">Model hub and hosted inference for open models</div>
+            </div>
+          </div>
+          <span class="tool-badge neutral">Tried</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">▲</div>
+            <div>
+              <div class="tool-name">Vercel AI SDK</div>
+              <div class="tool-desc">Deploy AI-powered apps with streaming support</div>
+            </div>
+          </div>
+          <span class="tool-badge neutral">Tried</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Built with plain HTML · Hosted on GitHub Pages</span>
+    <a href="https://github.com/yourusername" target="_blank">github.com/yourusername ↗</a>
+  </footer>
+
+</body>
+</html>
