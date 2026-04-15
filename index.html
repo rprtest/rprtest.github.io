@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Learning Journal</title>
+  <title>My AI Learning Corner</title>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -113,22 +113,7 @@
       line-height: 1.7;
       margin-bottom: 2rem;
     }
-    .hero-stats {
-      display: flex;
-      gap: 2rem;
-    }
-    .stat-num {
-      font-family: 'Instrument Serif', serif;
-      font-size: 28px;
-      color: var(--ink);
-      display: block;
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+
 
     /* MAIN LAYOUT */
     main {
@@ -150,10 +135,7 @@
       font-weight: 400;
       color: var(--ink);
     }
-    .section-count {
-      font-size: 12px;
-      color: var(--ink-3);
-    }
+
 
     /* CONCEPT CARDS */
     .cards-grid {
@@ -333,8 +315,9 @@
 <body>
 
   <nav>
-    <a class="nav-brand" href="#">AI Journal ✦</a>
+    <a class="nav-brand" href="#">My AI Corner ✦</a>
     <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#concepts">Concepts</a>
       <a href="#tools">Tools</a>
       <a href="https://github.com/yourusername" target="_blank">GitHub ↗</a>
@@ -342,33 +325,22 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-eyebrow">Actively learning</div>
-    <h1>My notes on <em>AI engineering</em> and the tools shaping it</h1>
-    <p class="hero-desc">
-      A living journal of what I'm exploring — from foundational concepts like MCP and context engineering to hands-on experiments with AI tools.
-    </p>
-    <div class="hero-stats">
-      <div>
-        <span class="stat-num">6</span>
-        <span class="stat-label">Concepts</span>
-      </div>
-      <div>
-        <span class="stat-num">8</span>
-        <span class="stat-label">Tools tried</span>
-      </div>
-      <div>
-        <span class="stat-num">2025</span>
-        <span class="stat-label">Started</span>
-      </div>
+    <div class="hero-eyebrow">Personal learning corner</div>
+    <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); margin-bottom: 1rem;">
+      <span style="font-size: 11px; font-weight: 500; background: var(--tag-tutorial); color: var(--tag-tutorial-ink); padding: 3px 9px; border-radius: 20px; letter-spacing: 0.03em;">Currently exploring</span>
+      Claude Code — agentic coding straight from the terminal
     </div>
+    <h1>Learning and exploring <em>what's possible</em> with AI</h1>
+    <p class="hero-desc">
+      My own little corner of the internet — where I document what I'm learning, the tools I'm trying, and the ideas that are changing how I think about building products.
+    </p>
   </section>
 
   <main>
 
     <section id="concepts">
       <div class="section-header">
-        <h2 class="section-title">Concepts & Notes</h2>
-        <span class="section-count">6 entries</span>
+        <h2 class="section-title">Things I'm learning</h2>
       </div>
 
       <div class="cards-grid">
@@ -379,46 +351,28 @@
             <span class="tag tag-concept">Concept</span>
             <h3>Model Context Protocol (MCP)</h3>
             <p>How AI models connect to external tools, APIs, and data sources — and why it changes what agents can do.</p>
-            <p class="card-date">April 2026</p>
+            <p class="card-date">Updated April 2026</p>
           </div>
           <div class="card-featured-right">
             <p>MCP is an open standard that lets AI models like Claude talk to external services — databases, APIs, file systems — through a common interface. Think of it as a USB-C port for AI: any model, any tool, one protocol.</p>
+            <a href="mcp.html" style="display: inline-flex; align-items: center; gap: 5px; margin-top: 14px; font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500;">Read my notes →</a>
           </div>
         </div>
 
-        <a href="#" class="card fade-in">
+        <a href="ai-agent.html" class="card fade-in">
+          <span class="tag tag-concept">Concept</span>
+          <h3>What is an AI agent?</h3>
+          <p>How AI models go beyond chat — taking actions, using tools, and completing multi-step tasks autonomously.</p>
+          <p class="card-date">Updated April 2026</p>
+          <p style="margin-top: 10px; font-size: 13px; color: var(--accent); font-weight: 500;">Read my notes →</p>
+        </a>
+
+        <a href="context-engineering.html" class="card fade-in">
           <span class="tag tag-concept">Concept</span>
           <h3>Context engineering</h3>
           <p>Designing what goes into the context window to get better, more reliable model responses.</p>
-          <p class="card-date">March 2026</p>
-        </a>
-
-        <a href="#" class="card fade-in">
-          <span class="tag tag-concept">Concept</span>
-          <h3>Prompt engineering basics</h3>
-          <p>System prompts, few-shot examples, chain-of-thought — the foundations of getting models to do what you want.</p>
-          <p class="card-date">February 2026</p>
-        </a>
-
-        <a href="#" class="card fade-in">
-          <span class="tag tag-tutorial">Tutorial</span>
-          <h3>Building my first AI agent</h3>
-          <p>Step-by-step: connecting Claude to a live data source using the Anthropic API.</p>
-          <p class="card-date">March 2026</p>
-        </a>
-
-        <a href="#" class="card fade-in">
-          <span class="tag tag-concept">Concept</span>
-          <h3>RAG — Retrieval Augmented Generation</h3>
-          <p>How to give a model access to your own documents and data at inference time.</p>
-          <p class="card-date">January 2026</p>
-        </a>
-
-        <a href="#" class="card fade-in">
-          <span class="tag tag-tutorial">Tutorial</span>
-          <h3>Automating tasks with n8n + AI</h3>
-          <p>A walkthrough of building a no-code AI workflow that summarises emails automatically.</p>
-          <p class="card-date">April 2026</p>
+          <p class="card-date">Updated April 2026</p>
+          <p style="margin-top: 10px; font-size: 13px; color: var(--accent); font-weight: 500;">Read my notes →</p>
         </a>
 
       </div>
@@ -428,8 +382,7 @@
 
     <section id="tools">
       <div class="section-header">
-        <h2 class="section-title">Tools I've tried</h2>
-        <span class="section-count">8 tools</span>
+        <h2 class="section-title">Tools I'm playing with</h2>
       </div>
 
       <div class="tools-list">
@@ -438,7 +391,7 @@
             <div class="tool-icon">✦</div>
             <div>
               <div class="tool-name">Claude (Anthropic)</div>
-              <div class="tool-desc">Daily driver for coding, writing, and exploration</div>
+              <div class="tool-desc">AI assistant for writing, research, and problem solving</div>
             </div>
           </div>
           <span class="tool-badge">Daily use</span>
@@ -447,68 +400,38 @@
           <div class="tool-row-left">
             <div class="tool-icon">⌘</div>
             <div>
-              <div class="tool-name">Cursor</div>
-              <div class="tool-desc">AI-first code editor built on VS Code</div>
+              <div class="tool-name">Claude Code</div>
+              <div class="tool-desc">Agentic coding tool that works directly in your terminal</div>
             </div>
           </div>
-          <span class="tool-badge">Daily use</span>
+          <span class="tool-badge neutral">Exploring</span>
         </div>
         <div class="tool-row">
           <div class="tool-row-left">
-            <div class="tool-icon">⚡</div>
+            <div class="tool-icon">◈</div>
             <div>
-              <div class="tool-name">n8n</div>
-              <div class="tool-desc">No-code automation with AI integrations</div>
+              <div class="tool-name">Claude Cowork</div>
+              <div class="tool-desc">Desktop tool for automating file and task management</div>
             </div>
           </div>
-          <span class="tool-badge">Experimenting</span>
-        </div>
-        <div class="tool-row">
-          <div class="tool-row-left">
-            <div class="tool-icon">🦙</div>
-            <div>
-              <div class="tool-name">Ollama</div>
-              <div class="tool-desc">Run open-source models locally on your machine</div>
-            </div>
-          </div>
-          <span class="tool-badge">Experimenting</span>
-        </div>
-        <div class="tool-row">
-          <div class="tool-row-left">
-            <div class="tool-icon">🔗</div>
-            <div>
-              <div class="tool-name">LangChain</div>
-              <div class="tool-desc">Framework for building LLM-powered applications</div>
-            </div>
-          </div>
-          <span class="tool-badge neutral">Tried</span>
-        </div>
-        <div class="tool-row">
-          <div class="tool-row-left">
-            <div class="tool-icon">🔍</div>
-            <div>
-              <div class="tool-name">Perplexity</div>
-              <div class="tool-desc">AI-powered search with cited sources</div>
-            </div>
-          </div>
-          <span class="tool-badge neutral">Tried</span>
-        </div>
-        <div class="tool-row">
-          <div class="tool-row-left">
-            <div class="tool-icon">🤗</div>
-            <div>
-              <div class="tool-name">Hugging Face</div>
-              <div class="tool-desc">Model hub and hosted inference for open models</div>
-            </div>
-          </div>
-          <span class="tool-badge neutral">Tried</span>
+          <span class="tool-badge neutral">Exploring</span>
         </div>
         <div class="tool-row">
           <div class="tool-row-left">
             <div class="tool-icon">▲</div>
             <div>
-              <div class="tool-name">Vercel AI SDK</div>
-              <div class="tool-desc">Deploy AI-powered apps with streaming support</div>
+              <div class="tool-name">Gamma</div>
+              <div class="tool-desc">AI-powered presentation and document builder</div>
+            </div>
+          </div>
+          <span class="tool-badge neutral">Tried</span>
+        </div>
+        <div class="tool-row">
+          <div class="tool-row-left">
+            <div class="tool-icon">♡</div>
+            <div>
+              <div class="tool-name">Lovable</div>
+              <div class="tool-desc">AI-powered app builder — go from idea to working product in minutes</div>
             </div>
           </div>
           <span class="tool-badge neutral">Tried</span>
@@ -518,8 +441,22 @@
 
   </main>
 
+  <div style="max-width: 760px; margin: 0 auto; padding: 0 2rem 3rem;">
+    <hr style="border: none; border-top: 1px solid var(--border); margin-bottom: 2.5rem;" />
+    <section id="about">
+      <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-family: 'Instrument Serif', serif; font-size: 18px; color: var(--accent); flex-shrink: 0;">R</div>
+        <div>
+          <p style="font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px;">Roopa Prakash · Senior Product Manager</p>
+          <p style="font-size: 14px; color: var(--ink-2); line-height: 1.7; margin: 0;">7+ years building B2B SaaS products at the intersection of learning and technology. I've owned AI-powered product development from strategy through launch — and this is where I document what I'm discovering along the way.</p>
+          <a href="https://www.linkedin.com/in/roopaprakash/" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500;">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <footer>
-    <span>Built with plain HTML · Hosted on GitHub Pages</span>
+    <span>My little corner of the internet · Hosted on GitHub Pages</span>
     <a href="https://github.com/yourusername" target="_blank">github.com/yourusername ↗</a>
   </footer>
 

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is an AI Agent? — My AI Learning Corner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F7F5F0; --surface: #FFFFFF; --ink: #1A1814; --ink-2: #6B6760; --ink-3: #B0ADA8;
+      --accent: #2D5BE3; --accent-light: #EBF0FD; --tag-concept: #F0EBF8; --tag-concept-ink: #5B3A9E;
+      --border: #E8E5DF;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; font-size: 15px; line-height: 1.6; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .page { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+    .back { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: var(--ink-3); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
+    .back:hover { color: var(--ink); }
+    .tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; margin-bottom: 1rem; background: var(--tag-concept); color: var(--tag-concept-ink); }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 400; line-height: 1.2; margin-bottom: 0.75rem; }
+    .meta { font-size: 13px; color: var(--ink-3); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .content h2 { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin: 2.25rem 0 0.75rem; }
+    .content p { font-size: 15px; color: var(--ink-2); line-height: 1.8; margin-bottom: 1.25rem; }
+    .content strong { color: var(--ink); font-weight: 500; }
+    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+    .callout p { margin: 0; font-size: 14px; color: var(--ink-2); }
+    .tldr { background: var(--accent-light); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+    .tldr-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px; }
+    .tldr p { font-size: 14px; color: var(--ink); line-height: 1.7; margin: 0; }
+    footer { max-width: 680px; margin: 0 auto; padding: 1.5rem 2rem 3rem; display: flex; justify-content: space-between; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink-3); }
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+    @media (max-width: 560px) { nav { padding: 1rem; } .page { padding: 2rem 1rem 4rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="index.html">My AI Corner ✦</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#concepts">Concepts</a>
+      <a href="index.html#tools">Tools</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <a class="back" href="index.html">← Back</a>
+    <span class="tag">Concept</span>
+    <h1>What is an AI agent?</h1>
+    <p class="meta">Updated April 2026 · 3 min read</p>
+
+    <div class="tldr">
+      <p class="tldr-label">My takeaway</p>
+      <p>An AI agent isn't just a chatbot — it's an AI that can plan, take actions, and loop until a task is done. The shift from "answering questions" to "getting things done" changes everything about how we build products.</p>
+    </div>
+
+    <div class="content">
+
+      <h2>Chat vs. agent — what's the difference?</h2>
+      <p>A regular AI interaction is a single exchange: you ask, it answers. An <strong>AI agent</strong> is different — it takes a goal, breaks it into steps, executes those steps (often using tools), checks the results, and keeps going until the job is done.</p>
+      <p>The key ingredient is <strong>autonomy over multiple steps</strong>. The model isn't just generating text — it's making decisions, calling tools, reading results, and adapting.</p>
+
+      <div class="callout">
+        <p>Simple way to think about it: a chatbot answers your question. An agent completes your task.</p>
+      </div>
+
+      <h2>What makes an agent an agent?</h2>
+      <p>Three things tend to define an agent: it has a <strong>goal</strong> to work towards, it has access to <strong>tools</strong> (search, code execution, file access, APIs), and it operates in a <strong>loop</strong> — acting, observing results, and deciding what to do next.</p>
+      <p>This loop is sometimes called a "ReAct" pattern — the model reasons about what to do, acts, and then reflects on the result before taking the next step.</p>
+
+      <h2>Why this matters for PMs</h2>
+      <p>As someone who builds products, the agent shift is significant. Features that used to require building custom automation pipelines can now be described in plain language and delegated to an agent. That changes what's feasible to build — and how fast you can build it.</p>
+      <p>It also raises new product questions: <strong>how much autonomy do you give the agent?</strong> When does it ask for confirmation? How do users stay in control? These are deeply product and UX problems, not just engineering ones.</p>
+
+      <h2>What I'm still figuring out</h2>
+      <p>I'm exploring how agents handle failure gracefully — what happens when a tool call doesn't work or the task is ambiguous. That gap between "it works in a demo" and "it works reliably in production" is where the most interesting product design happens.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>My little corner of the internet · Hosted on GitHub Pages</span>
+    <a href="https://www.linkedin.com/in/roopaprakash/" target="_blank">LinkedIn ↗</a>
+  </footer>
+
+</body>
+</html>

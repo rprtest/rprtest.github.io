@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context Engineering — My AI Learning Corner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F7F5F0; --surface: #FFFFFF; --ink: #1A1814; --ink-2: #6B6760; --ink-3: #B0ADA8;
+      --accent: #2D5BE3; --accent-light: #EBF0FD; --tag-concept: #F0EBF8; --tag-concept-ink: #5B3A9E;
+      --border: #E8E5DF;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; font-size: 15px; line-height: 1.6; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .page { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+    .back { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: var(--ink-3); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
+    .back:hover { color: var(--ink); }
+    .tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; margin-bottom: 1rem; background: var(--tag-concept); color: var(--tag-concept-ink); }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 400; line-height: 1.2; margin-bottom: 0.75rem; }
+    .meta { font-size: 13px; color: var(--ink-3); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .content h2 { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin: 2.25rem 0 0.75rem; }
+    .content p { font-size: 15px; color: var(--ink-2); line-height: 1.8; margin-bottom: 1.25rem; }
+    .content strong { color: var(--ink); font-weight: 500; }
+    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+    .callout p { margin: 0; font-size: 14px; color: var(--ink-2); }
+    .tldr { background: var(--accent-light); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+    .tldr-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px; }
+    .tldr p { font-size: 14px; color: var(--ink); line-height: 1.7; margin: 0; }
+    footer { max-width: 680px; margin: 0 auto; padding: 1.5rem 2rem 3rem; display: flex; justify-content: space-between; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink-3); }
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+    @media (max-width: 560px) { nav { padding: 1rem; } .page { padding: 2rem 1rem 4rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="index.html">My AI Corner ✦</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#concepts">Concepts</a>
+      <a href="index.html#tools">Tools</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <a class="back" href="index.html">← Back</a>
+    <span class="tag">Concept</span>
+    <h1>Context engineering</h1>
+    <p class="meta">Updated April 2026 · 3 min read</p>
+
+    <div class="tldr">
+      <p class="tldr-label">My takeaway</p>
+      <p>The quality of an AI's output depends almost entirely on the quality of its input. Context engineering is the discipline of designing that input thoughtfully — what you include, how you structure it, and what you leave out.</p>
+    </div>
+
+    <div class="content">
+
+      <h2>What even is "context"?</h2>
+      <p>Every time you interact with an AI model, it only knows what's in its <strong>context window</strong> — the text (and sometimes images or files) passed to it in that moment. It has no memory of past conversations unless you explicitly include them. Context is everything.</p>
+      <p>Context engineering is the practice of deliberately designing what goes into that window to get the most accurate, useful, and consistent outputs.</p>
+
+      <h2>It's more than prompt writing</h2>
+      <p>Prompt engineering is about crafting a good question or instruction. Context engineering is broader — it's about the entire information environment you create for the model. That includes system prompts that set the model's role and constraints, relevant background information or documents, examples of good and bad outputs, conversation history, and the structure and order of all the above.</p>
+
+      <div class="callout">
+        <p>Garbage in, garbage out — but also: too much in, signal lost. Context engineering is as much about what to leave out as what to include.</p>
+      </div>
+
+      <h2>Why I find this fascinating as a PM</h2>
+      <p>Context engineering feels like a product design problem. You're designing an interface — but instead of buttons and flows, you're designing information and instructions for an AI. The same UX instincts apply: clarity, hierarchy, removing noise, understanding your "user" (the model).</p>
+      <p>When a feature using AI behaves inconsistently, nine times out of ten the issue is the context — not the model itself. Getting this right is the difference between a demo that impresses and a product that works reliably.</p>
+
+      <h2>What I'm experimenting with</h2>
+      <p>I've been playing with how <strong>different system prompt structures</strong> affect Claude's responses — especially for tasks that require the model to follow a specific format consistently. Small changes in how you frame instructions can have surprisingly large effects on output quality.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>My little corner of the internet · Hosted on GitHub Pages</span>
+    <a href="https://www.linkedin.com/in/roopaprakash/" target="_blank">LinkedIn ↗</a>
+  </footer>
+
+</body>
+</html>
